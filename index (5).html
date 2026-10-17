@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yamna Maria – Flutter Developer</title>
+<meta name="description" content="Yamna Maria is a Flutter and mobile application developer building cross-platform apps with Dart, Firebase, REST APIs and Kotlin.">
+<meta name="theme-color" content="#0E7C86">
+<meta property="og:title" content="Yamna Maria – Flutter Developer">
+<meta property="og:description" content="Cross-platform mobile apps with Flutter, Dart, Firebase and REST APIs. See published apps and projects.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yamnaisrail.github.io/">
+<link rel="canonical" href="https://yamnaisrail.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📱%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F9FC; --surface:#FFFFFF; --ink:#101828; --muted:#475467; --line:#D8DEE8;
+  --accent:#0E7C86; --accent-ink:#FFFFFF; --soft:#E3F3F4;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0D1420; --surface:#151E2D; --ink:#EEF2F7; --muted:#A3AFC2; --line:#263247; --accent:#4CC2CC; --accent-ink:#06222A; --soft:#12303A; color-scheme:dark}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,3.5vw,2.3rem);margin-bottom:28px}
+p{margin:0}
+section{padding:72px 0;border-top:1px solid var(--line)}
+
+/* header */
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.brand{font-family:var(--display);font-weight:700;text-decoration:none}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem;padding:6px 0}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding:64px 0 80px;border-top:0}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:700}
+.role{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,1.6rem);color:var(--accent);margin:14px 0 20px;font-weight:500}
+.lede{max-width:52ch;color:var(--muted);font-size:1.08rem}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:11px 20px;border-radius:999px;border:1.5px solid var(--ink);text-decoration:none;font-weight:500}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-1px)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;color:var(--muted);font-size:.93rem}
+
+/* phone */
+.device{justify-self:center;width:100%;max-width:300px}
+.phone{background:var(--ink);border-radius:38px;padding:11px;box-shadow:0 24px 50px -24px rgba(16,24,40,.55)}
+.screen{background:var(--surface);border-radius:28px;min-height:400px;padding:34px 22px 22px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.screen::before{content:"";position:absolute;top:10px;left:50%;width:70px;height:7px;margin-left:-35px;border-radius:9px;background:var(--line)}
+.panel{display:flex;flex-direction:column;gap:12px;flex:1;animation:swap .35s ease}
+.panel[hidden]{display:none}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.icon{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;font-size:1.9rem;background:var(--soft)}
+.panel h3{font-size:1.35rem}
+.panel p{color:var(--muted);font-size:.93rem;line-height:1.55}
+.panel .btn{margin-top:auto;text-align:center;font-size:.92rem;padding:9px 14px}
+.tabs{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.tabs button{font:500 .85rem var(--body);color:var(--muted);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:6px 13px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+.shot{display:block;width:100%;max-height:230px;object-fit:cover;object-position:top;border-radius:14px;border:1px solid var(--line)}
+.panel:has(.shot) .icon{display:none}
+.group{font-size:1.05rem;color:var(--muted);font-weight:500;margin:40px 0 4px}
+.heroTags{margin:0 0 22px}
+
+/* projects */
+.project{display:grid;grid-template-columns:1fr auto;gap:12px 32px;padding:24px 0;border-bottom:1px solid var(--line);align-items:start}
+.project:first-of-type{border-top:1px solid var(--line)}
+.project h3{font-size:1.25rem;margin-bottom:6px}
+.project p{color:var(--muted);max-width:62ch}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-size:.82rem;background:var(--soft);padding:2px 10px;border-radius:999px}
+.links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.links a{font-size:.9rem;font-weight:500;padding:6px 14px;border:1.5px solid var(--line);border-radius:999px;text-decoration:none;white-space:nowrap}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.more{margin-top:28px;color:var(--muted)}
+.more a{color:var(--accent);font-weight:500}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}
+.skills h3{font-size:1.05rem;margin-bottom:12px}
+.skills ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.skills li{background:var(--surface);border:1px solid var(--line);padding:4px 13px;border-radius:999px;font-size:.93rem}
+
+/* experience */
+.timeline{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding-bottom:34px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-30px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.timeline h3{font-size:1.2rem}
+.org{color:var(--accent);font-weight:500;margin:2px 0}
+.when{color:var(--muted);font-size:.9rem;margin-bottom:8px}
+.timeline ul{margin:0;padding-left:18px;color:var(--muted);max-width:68ch}
+.timeline li li{padding:0 0 2px}
+.timeline li li::before{display:none}
+
+/* education */
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.edu h3{font-size:1.15rem;margin-bottom:6px}
+.edu p,.edu li{color:var(--muted)}
+.edu ul{margin:8px 0 0;padding-left:18px}
+
+/* contact */
+.contact p{max-width:52ch;color:var(--muted);margin-bottom:24px}
+footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+@media (max-width:820px){
+  .hero .wrap,.edu{grid-template-columns:1fr}
+  .device{order:-1;max-width:260px}
+  .screen{min-height:340px}
+  .project{grid-template-columns:1fr}
+  .links{justify-content:flex-start}
+  nav ul{gap:14px}
+  nav a{font-size:.88rem}
+}
+@media (max-width:520px){ header .wrap{padding:0 16px} .brand{font-size:.95rem} nav ul{gap:10px} nav a{font-size:.8rem} }
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;scroll-behavior:auto!important} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">Yamna Maria</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Yamna Maria</h1>
+        <p class="role">Flutter developer and mobile engineer</p>
+        <p class="lede">I build polished cross-platform mobile apps with Flutter and Dart, integrating APIs and backend services for reliable user experiences. Some of my apps are live on Google Play.</p>
+        <div class="tags heroTags"><span class="tag">Flutter and Dart</span><span class="tag">REST APIs</span><span class="tag">Firebase</span><span class="tag">Kotlin</span></div>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn" href="Yamna-Maria-CV.pdf" download>Download CV</a>
+          <a class="btn" href="https://github.com/YamnaIsrail" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="facts">
+          <span>BS Computer Science, CGPA 3.87</span>
+          <span>Mansehra, Pakistan</span>
+          <span>Open to remote work</span>
+        </div>
+      </div>
+
+      <div class="device">
+        <div class="phone">
+          <div class="screen" id="screen">
+            <div class="panel" id="p-qr" role="tabpanel" aria-labelledby="t-qr">
+              <img class="shot" src="images/qr-scanner.png" alt="Screenshot of the QR, Barcode and Document Scanner app" onerror="this.remove()">
+              <div class="icon" aria-hidden="true">📷</div>
+              <h3>QR, Barcode and Document Scanner</h3>
+              <p>Scans QR codes and barcodes, scans documents, creates PDFs and manages saved files.</p>
+              <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.akrodev.qrcodekit&hl=en" target="_blank" rel="noopener">View on Google Play</a>
+            </div>
+            <div class="panel" id="p-dev" role="tabpanel" aria-labelledby="t-dev" hidden>
+              <img class="shot" src="images/device-detection.png" alt="Screenshot of the Hidden Device Detection app" onerror="this.remove()">
+              <div class="icon" aria-hidden="true">📡</div>
+              <h3>Hidden Device Detection</h3>
+              <p>Detects nearby devices using phone sensors and real-time signal processing.</p>
+              <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.richdev.alldevicesfinder&hl=en" target="_blank" rel="noopener">View on Google Play</a>
+            </div>
+            <div class="panel" id="p-per" role="tabpanel" aria-labelledby="t-per" hidden>
+              <img class="shot" src="images/period-tracker.png" alt="Screenshot of the Women’s Period Tracker app" onerror="this.remove()">
+              <div class="icon" aria-hidden="true">🌸</div>
+              <h3>Women’s Period Tracker</h3>
+              <p>Cycle tracking with pill and water reminders, Kegel exercises and a partner login feature.</p>
+              <a class="btn primary" href="https://www.appbrain.com/app/flow-diary-period-tracker/com.solab.periodtracker" target="_blank" rel="noopener">View app stats</a>
+            </div>
+          </div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Featured apps">
+          <button role="tab" id="t-qr" aria-selected="true" aria-controls="p-qr">Scanner</button>
+          <button role="tab" id="t-dev" aria-selected="false" aria-controls="p-dev" tabindex="-1">Device finder</button>
+          <button role="tab" id="t-per" aria-selected="false" aria-controls="p-per" tabindex="-1">Tracker</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+
+      <article class="project">
+        <div>
+          <h3>QR, Barcode and Document Scanner</h3>
+          <p>A multi-purpose scanning app that reads QR codes and barcodes, scans documents, generates PDFs and keeps scanned files organized.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">PDF generation</span></div>
+        </div>
+        <div class="links"><a href="https://play.google.com/store/apps/details?id=com.akrodev.qrcodekit&hl=en" target="_blank" rel="noopener">Google Play</a></div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>Hidden Device Detection App</h3>
+          <p>A sensor-based app that detects nearby devices using mobile sensors and real-time signal processing.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Kotlin</span><span class="tag">Sensors</span></div>
+        </div>
+        <div class="links"><a href="https://play.google.com/store/apps/details?id=com.richdev.alldevicesfinder&hl=en" target="_blank" rel="noopener">Google Play</a></div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>Women’s Period Tracker</h3>
+          <p>A cycle tracking app with pill reminders, water reminders, Kegel exercises and a partner login feature.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Push notifications</span></div>
+        </div>
+        <div class="links">
+          <a href="https://www.appbrain.com/app/flow-diary-period-tracker/com.solab.periodtracker" target="_blank" rel="noopener">App stats</a>
+          <a href="https://chrome-stats.com/d/com.solab.periodtracker" target="_blank" rel="noopener">Analytics</a>
+        </div>
+      </article>
+
+      <h3 class="group">Other selected development projects</h3>
+
+      <article class="project">
+        <div>
+          <h3>Pregnancy Tracker</h3>
+          <p>A 42-week pregnancy tracking app with trimester insights, a meal planner, reminders and maternal health guidance.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Reminders</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>WiFi Hotspot Controller</h3>
+          <p>A system-level Android utility with a Flutter interface that uses Kotlin APIs to control hotspot states.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Kotlin</span><span class="tag">Android APIs</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>Phone Cleaner Utility</h3>
+          <p>A storage analysis app that finds and removes unnecessary files.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Storage analysis</span></div>
+        </div>
+      </article>
+
+      <p class="more">Source code and more work are on <a href="https://github.com/YamnaIsrail" target="_blank" rel="noopener">GitHub</a>.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div><h3>Mobile development</h3><ul><li>Flutter</li><li>Dart</li><li>Kotlin</li><li>Cross-platform apps</li></ul></div>
+        <div><h3>State management</h3><ul><li>GetX</li><li>Provider</li><li>Riverpod</li></ul></div>
+        <div><h3>Backend and APIs</h3><ul><li>REST APIs</li><li>Firebase Auth</li><li>Node.js</li><li>Push notifications</li></ul></div>
+        <div><h3>Databases</h3><ul><li>Firestore</li><li>Hive</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        <li>
+          <h3>Flutter Developer (Apprenticeship)</h3>
+          <p class="org">Pakistan Software Export Board (PSEB), Prime Minister’s Apprenticeship Program</p>
+          <p class="when">November 2025 to present</p>
+          <ul>
+            <li>Develop cross-platform mobile apps using Flutter and Dart.</li>
+            <li>Implement REST APIs and Firebase backend services.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Flutter Developer (Mobile and Backend)</h3>
+          <p class="org">ByteDeed, remote</p>
+          <p class="when">November 2024 to present</p>
+          <ul>
+            <li>Developed cross-platform mobile apps with Flutter and Dart.</li>
+            <li>Integrated REST APIs, Firebase services and third-party SDKs.</li>
+            <li>Implemented authentication systems, push notifications and analytics.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Mobile App Development Intern</h3>
+          <p class="org">Change Mechanics (NIC, Decode)</p>
+          <p class="when">January 2024 to February 2024</p>
+          <ul>
+            <li>Built Flutter features integrated with a Firebase backend.</li>
+            <li>Implemented API-driven workflows and structured app modules.</li>
+            <li>Worked in an agile environment on collaborative projects.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap edu">
+      <div>
+        <h2>Education</h2>
+        <h3>Bachelor of Science in Computer Science</h3>
+        <p>Hazara University, Mansehra, 2020 to 2024</p>
+        <p>CGPA: 3.87</p>
+      </div>
+      <div>
+        <h2>Certifications</h2>
+        <ul>
+          <li>Mobile App Development with Flutter</li>
+          <li>Getting Started with Node.js</li>
+          <li>Supervised Machine Learning</li>
+          <li>Foundations of Data Science</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Let’s work together</h2>
+      <p>I’m open to Flutter and mobile development roles, especially with small and mid-size teams. The fastest way to reach me is email.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:yamnaisrailkhan@gmail.com">yamnaisrailkhan@gmail.com</a>
+        <a class="btn" href="https://github.com/YamnaIsrail" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/yamnamaria" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year">2026</span> Yamna Maria</div>
+</footer>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function show(tab){
+    tabs.forEach(function(t){
+      var on=t===tab;
+      t.setAttribute('aria-selected',on);
+      t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t)});
+    t.addEventListener('keydown',function(e){
+      var n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:e.key==='Home'?0:e.key==='End'?tabs.length-1:null;
+      if(n===null)return;
+      e.preventDefault();
+      n=(n+tabs.length)%tabs.length;
+      tabs[n].focus();show(tabs[n]);
+    });
+  });
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
